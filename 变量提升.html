@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			console.log(parseInt('123a'))//123,
+			console.log(Number('123a')) //NaN
+			js执行前会做一个预处理工作
+			 --1.收集变量
+			 --2.收集函数
+			 依据:
+			  var 将var 后边的变量定义但不赋值var userName = undefined;
+			  function(){}提前定义该函数
+			  
+			  console.log(userName);
+			  var userName  = 'aa';
+			  func()
+			  function func(){
+			  	console.log('func()')
+			  }
+		</script>
+	</body>
+</html>
