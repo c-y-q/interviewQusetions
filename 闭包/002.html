@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+		  var foo = 'hello';
+		  (function(foo){
+		  	console.log(11,foo);//hello
+		  	var foo = foo || 'world';//hello
+		  	console.log(13,foo);//hello
+		  })(foo)
+		  console.log(15,foo)//hello
+		</script>
+	</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<script>
+			var obj = {
+				name: "aa"
+			}
+			console.log(obj.constructor)
+			console.log(obj.hasOwnProperty('name'))
+			console.log(obj.propertyIsEnumerable('name'));
+			var num = '33';
+			//			alert(--num )
+			var o = {
+				valueOf: function() {
+					return -1;
+				}
+			}
+			console.log(o)
+			var person = {
+				name:"aaaaa"
+			};
+			Object.defineProperty(person, 'name', {
+				writable: false,//能否修改属性值，默认true,
+				configurable:false,//是否可以delete删除,默认true
+				enumerable:true,//是否能for...in...循环
+				value: 'Nicholas'
+			})
+			console.log(person.name)
+			person.name= 'cccc';
+			delete person.name;
+			console.log(person.name);
+			
+			var book = {
+				_year:2004,
+				edition:1
+			}
+			Object.defineProperty(book,'year',{
+				get:function(){
+					return this._year;
+				},
+				set:function(newVal){
+					if(newVal > 2004){
+						this._year = newVal;
+						this.edition += newVal - 2004
+					}
+				}
+			})
+			console.log(book.year);
+			book.year = 2005;
+			console.log(book.year);
+			console.log(book.edition)
+			var book2 = {};
+			Object.defineProperties(book2,{
+				_year:{
+					value:2007
+				},
+				edithion:{
+					value:1
+				},
+				year:{
+					get:function(){
+						return this._year;
+					},
+					set:function(newVal){
+						if(newVal > 2004){
+							this._year = newVal;
+							this.edithion += newVal - 2
+						}
+					}
+				}
+			})
+			//alert(book2._year)
+			
+		</script>
+	</body>
+
+</html>

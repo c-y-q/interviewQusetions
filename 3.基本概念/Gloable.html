@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+				var url = 'https://www.baidu.com/s?ie=UTF-8&wd=linux常用命令';
+				console.log(encodeURI(url))
+				console.log(encodeURIComponent(url))//用的多
+				var arr = [1,2,3,4,5,6,7,8];
+				console.time('aaa');
+				var max = Math.max(...arr);
+				console.log(max)
+				console.timeEnd('aaa');
+				console.time('aaab');
+				var max2 = Math.max.apply(Math,arr);
+				console.log(max2)
+				console.timeEnd('aaab');
+				var num = Math.floor(Math.random()*100000+1)
+		        
+		        
+		</script>
+	</body>
+</html>

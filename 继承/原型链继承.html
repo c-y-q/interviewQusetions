@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	 <script type="text/javascript">
+	 	//缺点：会造成共享问题
+	 	function SupperType(){
+	 		this.property = true;
+	 	}
+	 	SupperType.prototype.getSupperValue = function(){
+	 		return this.property;
+	 	}
+	 	function SubType(){
+	 		this.subproperty = false;
+	 	}
+	 	//继承SupperType
+	 	SubType.prototype = new SupperType();
+//	 	SubType.prototype.getSubValue = function(){
+//	 		return this.property;
+//	 	}
+     var instance = new SubType();
+     //alert(instance.getSupperValue())
+	 	
+	 </script>
+	</body>
+</html>

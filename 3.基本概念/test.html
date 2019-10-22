@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			//局部变量
+			function test(){
+				var msg = 'hi';
+			}
+			test();
+			//alert(msg)//Uncaught ReferenceError: msg is not defined
+			 
+			 //全局变量
+			function test2(){
+				msg2 ="hi222222";
+			}
+			test2();
+//			alert(msg2)
+
+		</script>
+	</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var color = 'blue';
+			
+			function changeColor(){
+				if(color == 'blue'){
+					color = 'red';
+				}else{
+					color = 'blue';
+				}
+			}
+			//changeColor();
+			//alert(color)
+			function changeColor2(){
+				var ano = 'red';
+				function swap(){
+					var tem  = ano;
+					ano  =color;
+					color = tem;
+				}
+				swap();
+			}
+			//changeColor2();
+			//alert(color)
+			function bul(){
+				var qs = '?debug=true';
+				with(location){
+					var url = 'http:www.baidu'+qs
+				}
+				return url
+			}
+			//alert(bul())
+			var c2 = 'blue';
+			function getColor(){
+				var c2 = 'red';
+				return c2
+			}
+			alert(getColor())
+		</script>
+	</body>
+</html>

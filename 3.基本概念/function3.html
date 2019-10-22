@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			function sum(num,num2){
+				return num + num2;
+			}
+			function callSum1(){
+				return sum.apply(this,arguments)
+			}
+			//alert(callSum1(1,2))
+			function outer(){
+				inner();
+			}
+			function inner(){
+				alert(inner.caller)
+			}
+			outer()
+		</script>
+	</body>
+</html>

@@ -1,0 +1,10 @@
+
+注意：未说明的，可选
+1.router.post('/admin/findMacAddrList');
+macAddr,remarks,pageSize,pageIndex
+2.  router.post('/admin/addMacAddr')
+macAddr(必)，userId（为哪个账号添加Mac 地址),remarks
+3. router.post('/admin/delMacAddr')
+id(必)
+4.router.post('/admin/updateMacAddr'）
+id(必)，remarks,status(1.正常使用，3.禁用，2.已删除),

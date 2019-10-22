@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//非严格模式下
+			function factorial(num){
+				if(num < 1){
+					return 1;
+				}else{
+					return num * arguments.callee(num -1);
+				}
+			}
+			//严格模式
+			var facorial = (function f(num){
+				if(num < 1){
+					return 1;
+				}else{
+					return num * f(num -1 );
+				}
+			})
+		</script>
+	</body>
+</html>

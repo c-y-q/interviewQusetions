@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/*
+			 原型对象的问题
+		   **/
+			function Person(){}
+			var friend = new Person();
+			Person.prototype = {
+				constructor:Person,
+				name:'Nichenos',
+				friends:['sheng','javascript'],
+				age:29,
+				sayName(){
+					alert(this.name);
+				}
+			}
+			//friend.sayName();//friend.sayName is not a function
+			var p1 = new Person();
+			var p2 = new Person();
+			p1.friends.push('cccc');
+			//alert(p2.friends);
+			//alert(p1.friends === p2.friends)
+			/***
+			 * 4.组合使用构造函数模式和原型模式
+			 */
+			function Student(name,age){
+				this.name = name;
+				this.age = age;
+				this.friends = ['aaaa','cccc'];
+			}
+			Student.prototype = {
+				constructor:Student,
+				sayName(){
+					alert(this.name);
+				}
+			}
+			var stu1 = new Student('Ma',29);
+			var stu2 = new Student('Gra',22);
+			stu1.friends.push('bbbbbb')
+			//alert(stu2.friends)
+			//alert(stu1.sayName === stu2.sayName)
+		</script>
+	</body>
+</html>

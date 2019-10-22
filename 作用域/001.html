@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	  <script type="text/javascript">
+	  	var arr = [1,2,3,4];
+	  	function fn (arr){
+	  		arr[0] = 0;
+	  		arr = [0];
+	  		arr[0] = 100;
+	  		return arr;
+	  	}
+	  	var res = fn(arr);
+	  	console.log(17,arr);//0,2,3,4
+	  	console.log(18,res)//100
+	  </script>
+	</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/**
+			 * 常用继承
+			 * @param {Object} name
+			 */
+			function SupperType(name){
+				this.name = name;
+				this.colors = ['red','blue','green'];
+			}
+			SupperType.prototype.sayName = function(){
+				alert(this.name);
+			}
+			function SubType(name,age){
+				//继承属性
+				SupperType.call(this,name);
+				this.age = age;
+			}
+			//继承方法
+			SubType.prototype = new SupperType();
+			
+			var s1 = new SubType('aa',23);
+			console.log(s1 instanceof SupperType,s1 instanceof SubType,s1.isPrototypeOf(SubType))
+			//s1.sayName()
+		</script>
+	</body>
+</html>

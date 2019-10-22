@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<script type="text/javascript">
+			var url = 'https://www.baidu.com/s?ie=UTF-8&wd=linux常用命令';
+			String.prototype.getParams = function() {
+				let obj = {};
+				let reg = /([^&?=]+)=([^&?=]+)/g;
+				this.replace(reg, function(...args) {
+					console.log(14, args);
+					obj[args[1]] = args[2];
+				})
+				return obj;
+			}
+			//			console.log(url.getParams());
+			//所有出现的大写字母转换为小写，并且在匹配位置前加一个连字符
+			var letter = 'boderTop';
+			const strt = letter.replace(/[A-Z]/g, function(strs) {
+				console.log(23, strs);
+				return `-${strs.toLowerCase()}`;
+			})
+			//console.log(25,strt)
+			const obj = {
+				create_time_addr: "2013",
+				update_time: "8910",
+				remarks:'aaaa'
+			}
+			const obj2 = [{
+					create_time_addr: "2013",
+					update_time: "8910",
+					remarks:'aaaa'
+				},
+				{
+					create_time_addr: "2013",
+					update_time: "8910",
+					remarks:'aaaa'
+				}
+			];
+
+			function toStransFer(obj) {
+				if(Array.isArray(obj) && obj.length > 0) {
+					let objarr = [];
+					for(let p of obj) {
+						objarr.push(transJson(p));
+					}
+					return objarr;
+				}else{
+					return transJson(obj);
+				}
+				function transJson(objson) {
+					let o = {};
+					for(let key in objson) {
+						let str = `${key}`.replace(/_[a-z]/g, function(arg) {
+							console.log(60,arg)
+							return arg.toUpperCase().replace('_', '');
+						})
+						o[str] = objson[`${key}`] || '';
+					}
+					return o
+				}
+			}
+			const result = toStransFer(obj);
+			console.log(45, result)
+		</script>
+	</body>
+
+</html>

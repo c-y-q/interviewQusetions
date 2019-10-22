@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+		 function addTen(num){
+		 	num+=10;
+		 	return num;
+		 }
+		 var count = 20;
+		 var result = addTen(count);
+		 //alert(result+'--'+count);//30,20
+		 function setName(obj){
+		 	obj.name='aaa';
+		 	obj = new Object();
+		 	obj.name = "bbbb";
+		 }
+		 var p = new Object();
+		 setName(p);
+		// alert(p.name)
+		//alert(typeof NaN)
+		alert([1] instanceof Array)
+		</script>
+	</body>
+</html>

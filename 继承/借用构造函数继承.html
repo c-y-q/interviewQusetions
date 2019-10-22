@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			function SupperType(name,){
+				this.colors = ['red','blue','green'];
+				this.name = name;
+			}
+			function SubType(){
+				SupperType.call(this,'SubType');
+				this.age = 29
+			}
+			
+			var instance1 = new SubType();
+		    instance1.colors.push('black');
+		    console.log('1',instance1.colors)
+		    var instance2 = new SubType();
+		    console.log('2',instance2.colors)
+		</script>
+	</body>
+</html>
