@@ -1,0 +1,8 @@
+1.call.bind,apply区别
+s:1.都是改变this指向，fn.call(obj,1,2,4),fn.apply(obj,[1,2,4]),bind(obj,1,);
+  2.都是funtion原型上的方法
+bind并没有立即执行，而是进行预处理
+2.箭头函数和普通函数的区别
+ a.箭头函数没有自己的this，它的this是继承函数所处上下文的this(使用call,bind,apply无法改变this指向);
+ b.箭头函数中没有arguments;只能基于...arg(数组)获取参数传递信息;
+ c.箭头函数不能new(因为没有this,也没有prototype)

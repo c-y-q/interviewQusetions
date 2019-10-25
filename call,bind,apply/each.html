@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/**
+			 * 自定义each方法，可以结束循环
+			 */
+			function each(arr,callback){
+				for (let i = 0; i < arr.length; i++) {
+					let flag = callback.call(arr,arr[i],i);
+					if(flag === false){
+						break;
+					}
+				}
+			}
+			each([1,2,3,4,5,6,7],function(item,index){
+				if(index > 2){
+					return false;
+				}
+			})
+			let str = 'heLLO Ni Hao';
+			str = str.replace(/[a-zA-Z]/g,(obj)=>{
+				return obj.toUpperCase() == obj ? obj.toLowerCase():obj.toUpperCase();
+			})
+			//alert(str)
+		</script>
+	</body>
+</html>

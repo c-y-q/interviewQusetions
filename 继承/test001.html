@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			function Fn(){
+				this.x = 100;
+				this.y = 200;
+				this.getX = function(){
+					console.log(this.x);
+				}
+			}
+			Fn.prototype.getX = function(){
+				console.log(this.x);
+			}
+			Fn.prototype.getY = function(){
+				console.log(this.y)
+			}
+			var f1 = new Fn;
+			var f2 = new Fn;
+			console.log(f1.getX() === f2.getX());
+			console.log(25,f1.getY() === f2.getY())
+			console.log(26,f2.__proto__.getY === Fn.prototype.getY);
+			console.log(27,f1.__proto__.getX ===f2.getX);//false
+			console.log(28,f1.getX === Fn.prototype.getX);//false
+			//console.log(f1.constructor)
+			console.log(Fn.prototype.__proto__.constructor)
+			f1.getX();
+			//f1._proto__.getX()//test001.html?__hbt=1571757127091:32 Uncaught TypeError: Cannot read property 'getX' of undefined
+		    f2.getY();
+		    Fn.prototype.getY();//undefined
+		    
+		    
+		    //----------------------
+		    	function Fn2(){
+				this.x = 100;
+				this.y = 200;
+				this.getX = function(){
+					console.log(this.x);
+				}
+			}
+			Fn2.prototype.getX = function(){
+				console.log(this.x);
+			}
+			Fn2.prototype.getY = function(){
+				console.log(this.y)
+			}
+			Fn2.prototype = {
+				y:400,
+				getX(){
+					console.log(54,this.x);
+				},
+				getY(){
+					console.log(57,this.y)
+				},
+				sum(){
+					console.log(60,this.y+this.x)
+				}
+			}
+			var f3 = new Fn2;
+			var f4 = new Fn2;
+			console.log(65,f3.getX === f4.getX);
+			console.log(66,f3.getY === f4.getY)
+			console.log(67,f4.__proto__.getY === Fn2.prototype.getY);
+			console.log(68,f3.__proto__.getX ===f4.getX);//false
+			console.log(29,f3.getX === Fn2.prototype.getX);//false
+			//console.log(f1.constructor)
+			console.log(Fn2.prototype.__proto__.constructor)
+			f3.getX();
+			//f1._proto__.getX()//test001.html?__hbt=1571757127091:32 Uncaught TypeError: Cannot read property 'getX' of undefined
+		    f4.getY();
+		    Fn2.prototype.getY();//undefined
+		    
+		</script>
+	</body>
+</html>

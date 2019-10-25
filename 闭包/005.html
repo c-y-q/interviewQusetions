@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			function counter(){
+				var n = 0;
+				return{
+					count(){
+						return n++;
+					},
+					resets(){
+						n = 0;
+					}
+				}
+			}
+			var c = counter(),d = counter();
+			console.log(21,c.count());
+			console.log(22,d.count());
+			console.log(23,c.resets());
+			console.log(24,c.count());
+			console.log(25,d.count())
+			
+		</script>
+	</body>
+</html>

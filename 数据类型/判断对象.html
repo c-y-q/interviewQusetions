@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var o = {name:1},p = {name:1};
+			console.log(o == p)//false
+			var a = [],b = [];
+			console.log(12,a==b)//false
+			var c = [];
+			var d = c;
+			d[0] = 1;
+		    c[0] //1
+		    console.log(d == c )//true,引用同一个数组
+			//alert(Boolean({}))true
+			//alert(Number([]))//0
+			//alert(Number([9])) //9
+			var arr1 = [1],arr2 = [1];
+			console.log(arr1 == arr2);
+			//alert(null === undefined)
+			alert(+'aa')//NaN
+		</script>
+	</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var a = {},b='123',c = 123;
+			a[b] = 'b';
+			a[c] = 'c';
+			console.log(a[b])//c
+			var a = {},b=Symbol('123'),c = Symbol(123);
+			a[b] = 'b';
+			a[c] = 'c';
+			//alert(a[b])//c
+			var a = {},b={key:'123'},c = {key:'456'};
+			a[b] = 'b';
+			a[c] = 'c';
+			console.log(a[b])
+		</script>
+	</body>
+</html>

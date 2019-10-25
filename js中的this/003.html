@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			function fun(){
+				this.a = 0;
+				this.b = function(){
+					alert(this.a)
+				}
+			}
+			fun.prototype = {
+				b(){
+					this.a = 20;
+					alert(this.a);
+				},
+				c(){
+					this.a = 30;
+					alert(this.a)
+				}
+			}
+			var myfun = new  fun();
+			myfun.b()//私有b,0
+			myfun.c();//30
+			myfun.__proto__.c();
+			console.log(myfun.a)
+		</script>
+	</body>
+</html>

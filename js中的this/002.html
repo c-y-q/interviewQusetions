@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var name = 'window';
+			var Tom = {
+				name:'Tom',
+				show(){
+					console.log(this.name);
+				},
+				wait(){
+					var fun = this.show;
+					fun();
+				}
+			}
+			Tom.wait()//window,fun()的this为window对象
+		</script>
+	</body>
+</html>

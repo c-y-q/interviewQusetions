@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<script type="text/javascript">
+			var scope = 'gloabal scope';
+			function checkscope() {
+				var scope = 'local scope';
+				function nested() {
+					var scope = 'nested scope';
+					return scope;
+				}
+				return nested();
+			}
+			var res = checkscope();
+			console.log(res);//nested scope
+			function test(o){
+				var i = 0;
+				if(typeof o == 'object'){
+					var j = 0;
+					for(var k = 0;k < 10; k++){
+						console.log(27,k);
+					}
+					console.log(29,k);
+				}
+				console.log(31,j);//0
+			}
+			test({});
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/**
+			 * 箭头函数中的this
+			 * 
+			 * 2.箭头函数和普通函数的区别
+ a.箭头函数没有自己的this，它的this是继承函数所处上下文的this(使用call,bind,apply无法改变this指向);
+ b.箭头函数中没有arguments;只能基于...arg(数组)获取参数传递信息
+			 */
+			document.body.onclick = ()=>{
+				//箭头函数,this为window
+			}
+			document.body.onclick=function(){
+				//this:body
+				arr.sort(function(){
+					//this:window,回调函数中的this,一般是window
+					
+				})
+				arr.sort((a,b)=>{
+					//this:body
+				})
+			}
+			let fn=(...arg)=>{
+				console.log(30,arg)
+			}
+			fn(1,2,3,4)
+		</script>
+	</body>
+</html>

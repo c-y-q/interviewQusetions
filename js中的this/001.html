@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var fullName = 'language';
+			var obj = {
+				fullName:'javascript',
+				prop:{
+					getFullName(){
+						return this.fullName;
+					}
+				}
+			}
+			var d = obj.prop;
+			console.log(d.getFullName())
+			console.log(obj.prop.getFullName())//undefined
+			var test =obj.prop.getFullName;
+			console.log(test())//language
+		</script>
+	</body>
+</html>

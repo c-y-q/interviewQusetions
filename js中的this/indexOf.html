@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			let str = 'woyaopeixun';
+			(function(){
+				function myIndexOf(T){
+					let lenT = T.length,lenS = this.length,res = -1;
+					for (let i = 0; i < lenS -lenT; i++ ) {
+						if(this.substr(i,lenT) === T){
+							res = i;
+							break;
+						}
+					}
+					return res;
+				}
+				function myIndexOf2(T){
+					let ressult = new RegExp(T);//eval(`/${T}/`).exec(this);
+					ressult = ressult.exec(this);
+					if (!ressult){ 
+						return -1;
+					}
+					else{
+						return ressult.index;
+					}
+				}
+				String.prototype.myIndexOf = myIndexOf;
+				String.prototype.myIndexOf2 = myIndexOf2;
+			})()
+			alert(str.myIndexOf2('pei'))
+		</script>
+	</body>
+</html>

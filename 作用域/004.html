@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var scope = 'globle';
+			function f(){
+				console.log(11,scope);//undefined
+				var scope = 'local';
+				console.log(scope);//local
+			}
+			f()
+		</script>
+	</body>
+</html>
