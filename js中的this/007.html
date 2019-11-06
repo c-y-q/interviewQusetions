@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var a = 10;
+			function fn(){
+				var b = 20;
+				function bar(){
+					console.log(13,a+b)
+				}
+				return bar;
+			}
+			var x = fn(),b = 200;
+			x()
+		</script>
+	</body>
+</html>

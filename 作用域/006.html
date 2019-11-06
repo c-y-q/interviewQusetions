@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			for(let i = 0; i < 3; i++){
+				const i = 'abc';
+				console.log(i)
+			}
+			const foo = {};
+			foo.prop = 123;
+			//foo = {} Assignment to constant variable.
+			
+			function log(x,y='world'){
+				console.log(x,y)
+			}
+			var x =1;
+			function f(x,y=x){
+				console.log(22,y)
+			}
+			f(2)	//2
+			console.log(23,x)
+		</script>
+	</body>
+</html>

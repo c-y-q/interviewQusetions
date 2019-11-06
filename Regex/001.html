@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//英文字母汉子组成的字符串,用正则给英文单词前后加空格
+			let str = 'no作no死,你能你can,不能no哗哗',
+			    reg = /\b[a-z]+\b/ig;
+			    str = str.replace(reg,val=>{
+			    	 return `  ${val}  `;
+			    }).trim()//去除左右结尾的空格
+			    alert(str)
+		</script>
+	</body>
+</html>

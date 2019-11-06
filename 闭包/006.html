@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+
+			for (var i = 0; i< 10; i++) {
+				(function(i){
+					setTimeout(()=>{
+					console.log(i)
+				},1000)
+				})(i)
+			}
+			for (let i = 10; i< 20; i++) {
+				setTimeout(_=>{
+					console.log(i)
+				},1000)
+			}
+			for (let i = 20; i< 30; i++) {
+				setTimeout(((i)=>{
+					return ()=>{
+						console.log(i)
+					}
+				})(i),1000)
+				
+				setTimeout((i=>()=>console.log(i))(i),1000)
+			}
+			for (let i = 40; i< 50; i++) {
+				setTimeout(function(i){
+					console.log(i)
+				}.bind(null,i),1000)
+			}
+		</script>
+	</body>
+</html>

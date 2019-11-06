@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<script type="text/javascript">
+//			const a1 = [1, 2];
+			//		 const a2 = a1;
+			//		 a2[0] = 2;
+			//		 console.log(a1)//2,2
+//			const a2 = a1.concat();
+//			a2[0] = 2
+//			console.log(a1); //1,2
+//			const a3 = [...a1];
+//			a3[0] = 4;
+//			console.log(a1) //1,2
+
+           /***
+            * 两种方法都是浅拷贝
+            */
+			const a1 = [{
+				foo: 1
+			}];
+			const a2 = [{
+				bar: 2
+			}];
+
+			const a3 = a1.concat(a2);
+			a3[0].foo = 3
+			console.log(a1[0].foo)
+			const a4 = [...a1, ...a2];
+            a4[0].foo = 4;
+            console.log(a1[0].foo)
+			console.log(a3[0] === a1[0]) // true
+			console.log(a4[0] === a1[0]) // true
+			
+			const arr = Array.from([1, , 2, , 3], (n) => n || 0);
+			alert([1, 2, NaN].includes(NaN)) // true)
+			
+		</script>
+	</body>
+
+</html>

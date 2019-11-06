@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var o = {
+				m:function(){
+					var self = this;
+					console.log(11,this ===o)
+					fn();
+					function fn(){
+						console.log(15,this,this ===o)
+						console.log(16,self == o)
+					}
+				}
+			}
+			o.m()
+		</script>
+	</body>
+</html>

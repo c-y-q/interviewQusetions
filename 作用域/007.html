@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var x = 1;
+			function foo(x = x){
+//				console.log(11,x)
+			}
+//			foo()
+function add(...values){
+	let sum  = 0;
+	for(var val of values){
+		sum += val;
+	}
+	return sum;
+}
+const sun = add(2,4,5);
+const doSome = (function(){
+	return function(val=42){
+		return val
+	}
+}());
+alert(doSome())
+		</script>
+	</body>
+</html>

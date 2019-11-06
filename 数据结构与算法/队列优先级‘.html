@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//封装优先级队列
+			function PriorityQueue(){
+				function QueueElement(element,priorty){
+					this.element = element;
+					this.priorty = priorty;
+				}
+				//封装属性
+				this.items = [];
+				//实现插入
+				PriorityQueue.prototype.enqueue = function(element,priorty){
+					var queueElement = new QueueElement(element,priorty);
+					if(!this.items.length){
+						this.items.push(queueElement);
+					}else{
+						var added = false;
+						for(let i = 0; i < this.items.length; i++){
+							if(queueElement.priorty < this.items[i].priorty){
+								this.items.splice(i,0,queueElement);
+								added = true;
+								break;
+							}
+						}
+						if(!added){
+							this.items.push(queueElement);
+						}
+					}
+				}
+				
+			
+			//2.从队列中删除第一个元素
+			PriorityQueue.prototype.delqueue = function() {
+				return this.items.shift();
+			}
+			//3.查看队列的第一个元素
+			PriorityQueue.prototype.front = function() {
+				return this.items[0];
+			}
+			//4.查看队列是否为空
+			PriorityQueue.prototype.isEmpty = function() {
+				return this.items.length == 0;
+			}
+			//5.查看队列中元素的个数
+			PriorityQueue.prototype.size = function() {
+				return this.items.length;
+			}
+			}
+			//测试
+			var p = new PriorityQueue();
+			p.enqueue('aaa',2);
+			p.enqueue('bbb',3)
+			p.enqueue('ccc',1)
+			console.log(p)
+		</script>
+	</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<script type="text/javascript">
+	   class Foo{
+	   	static bar(){
+	   		console.log(13,'bar1')
+	   	}
+	   	static bar(){
+	   		console.log(16,'bar2')
+	   	}
+	   	bar(){
+	   		console.log(19,'bar');
+	   	}
+	   }
+	   Foo.bar()
+	   var f = new Foo();
+	   f.bar();
+	   
+	   class Foo2{
+	   	static classMethod(){
+	   		return 'hello';
+	   	}
+	   }
+	   class Bar extends Foo2{
+	   	
+	   }
+	 var str = Bar.classMethod();
+	 console.log(35,str)
+		</script>
+	</body>
+
+</html>

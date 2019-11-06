@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<script type="text/javascript">
+			/**
+			 * new.target 可以获取当前子类实例
+			 */
+			class Rectangle {
+				constructor(length, width) {
+					console.log(13, new.target)
+					console.log(new.target === Square);
+					// ...
+				}
+			}
+			
+			class Square extends Rectangle {
+				constructor(length,width) {
+					super(length, width);
+				}
+			}
+			var obj = new Square(3,4);
+			
+			class A {
+				static hell(){
+					console.log(31,'hello world')
+				}
+			}
+			class B extends A{}
+			B.hell()
+			//Object.getPrototypeOf方法可以用来从子类上获取父类。
+			//可以使用这个方法判断，一个类是否继承了另一个类
+			let flag = Object.getPrototypeOf(B) === A;
+			alert(flag)
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<script type="text/javascript">
+			function Foo() {
+				Foo.a = function() {
+					console.log(1);
+				}
+				this.a = function() {
+					console.log(2)
+				}
+			}
+			Foo.prototype.a = function() {
+				console.log(3);
+			}
+			Foo.a = function() {
+				console.log(4)
+			}
+			Foo.a(); //4
+			let obj = new Foo();
+			obj.a(); //2
+			Foo.a(); //1
+			
+			
+			let obj2 = {
+				['h' + 'ello']() {
+					return 'hi';
+				}
+			};
+
+			obj2.hello() // hi
+			const flag = Object.getOwnPropertyNames(obj2);
+			//alert(flag)
+			class Person{
+				getName(){
+					console.log('aa')
+				}
+			}
+			var p = new Person();
+			const flag2 = Object.getOwnPropertyNames(p);
+			console.log(flag2)
+			const flag3 =Reflect.ownKeys(p);
+			console.log(flag3)
+		</script>
+	</body>
+
+</html>

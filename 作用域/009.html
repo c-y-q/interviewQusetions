@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var a = 10;
+			function fn (){
+				console.log(11,a)//10
+			}
+			function bar(f){
+				var a = 20;
+				f();
+				console.log(16,a);//20
+			  return function(){
+			  console.log(18,this.a)
+			  	console.log(19,a)
+			  }
+			}
+			bar(fn)()
+		</script>
+	</body>
+</html>

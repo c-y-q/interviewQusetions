@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var o = {
+				n:0,
+				toString:function(){
+					return ++this.n
+				}
+			}
+		
+			if(o ==1 && o==2 && o==3){
+				console.log(11)
+			}
+			var a = [1,2,3];
+			a.toString = a.shift;
+			if(a ==1 && a==2 && a==3){
+				console.log(12)
+			}
+			Object.defineProperty(window,'c',{
+				get:function(){
+					let val = this.value;
+					val ? this.value++:this.value=1;
+					return this.value
+				}
+			})
+			if(c ==1 && c==2 && c==3){
+			alert(13)
+			}
+		</script>
+	</body>
+</html>

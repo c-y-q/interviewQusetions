@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/**
+			 * this,扔指向window
+			 */
+			var x = 200
+			var obj = {
+				x:10,
+				fn:function(){
+					function f(){
+					console.log(12,this);
+					console.log(13,this.x);
+					}
+					f()
+				}
+				
+			}
+			obj.fn()
+		</script>
+	</body>
+</html>

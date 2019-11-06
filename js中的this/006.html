@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var x = 10;
+		
+			function show(f){
+				var x = 20;
+				(function(){
+					f()
+				})()
+			}
+			show(fn)//10
+
+			function fn(){
+				console.log(11,x)
+			}
+			
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//数组扁平化，去除重复，生序
+			let arr = [[1,2,3],[3,4,5,5],[6,7,8,9,[11,12,[12,13,14]]],10];
+			/**
+			 * 第一种方式扁平化
+			 */
+//			arr = arr.flat(Infinity);
+//			arr = [...new Set(arr)].sort((a,b)=>a-b)
+//			console.log(13,arr)
+			/**
+			 * 第二种方式扁平化
+			 */
+			arr.toString().split(',').map(item=>Number(item));
+			/**
+			 * 第三种扁平化
+			 */
+			JSON.stringify(arr).replace(/(\[|\])/g,'')
+		</script>
+	</body>
+</html>
