@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<script type="text/javascript">
+			var obj = {
+				name: 'bill'
+			}
+
+			function setName(obj) {
+				obj.name = 'cccc';
+				obj = new Object();
+				obj.name = 'bbbb'
+			}
+			setName(obj);
+			console.log(obj); //ccc
+
+			var count = 10;
+
+			function addTen(count) {
+				count = 20;
+			}
+
+			addTen(count);
+			console.log(count) //10
+             
+            const arr = [1, 2, 3, 4, 5];
+			function setArr(arr) {
+				arr[0] = 10;
+				arr = new Array();
+				arr[0] = 20;
+			}
+			setArr(arr);
+			console.log(arr)//10
+		</script>
+	</body>
+
+</html>
