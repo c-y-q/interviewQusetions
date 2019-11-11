@@ -36,10 +36,29 @@ function toTuoFeng(obj) {
     return JSON.parse(obj3);
 }
 //转下划线
-const varsg = {
-    macAddr: 'mac电脑',
-    remarks: '我去'
+// const varsg = {
+//     macAddr: 'mac电脑',
+//     remarks: '我去'
+// }
+// const str5 = JSON.stringify(varsg);
+// const str6 = str5.replace(/[A-Z]/g, val => `_${val.toLowerCase()}`);
+// console.log(str6)
+var myObject = (function () {
+    var __name = 'sven';
+    return {
+        getName() {
+            return __name;
+        }
+    }
+})()
+console.log(myObject.getName())
+
+Object.create = Object.create || function (obj) {
+    var F = function () {}
+    F.prototype = obj;
+    return new F()
 }
-const str5 = JSON.stringify(varsg);
-const str6 = str5.replace(/[A-Z]/g, val => `_${val.toLowerCase()}`);
-console.log(str6)
+var obj1 = new Object();
+var obj2 = {};
+console.log(Object.getPrototypeOf(obj1) === Object.prototype); // 输出:true
+console.log(Object.getPrototypeOf(obj2) === Object.prototype); // 输出:true
