@@ -150,15 +150,15 @@
 				//1.越界判断
 				if(position < 0 || position >= this.length) return null;
 				 //2.获取元素
-//				 let current = this.head;
-//				 let index = 0;
-//				 while(index++ < position){
-//				 	current = current.next;
-//				 }
-//				 return current.data;
+				 let current = this.head;
+				 let index = 0;
+				 while(index++ < position){
+				 	current = current.next;
+				 }
+				 return current.data;
 //this.length/2 > position,this.length/2 < position
-                let current = this.tail;
-                let index = this.length -1;
+//              let current = this.tail;
+//              let index = this.length -1;
 			}
 			//5.indexOf方法
 			DoubleLinkedList.prototype.indexOf = function(data){

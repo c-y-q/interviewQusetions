@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>二叉搜索树</title>
+	</head>
+
+	<body>
+		<script type="text/javascript">
+			//封装二叉搜索树
+			function BinarySearchTree() {
+				function Node(key) {
+					this.key = key;
+					this.left = null;
+					this.right = null;
+				}
+				//属性
+				this.root = null;
+				/**
+				 * 方法
+				 */
+				//1.插入方法
+				BinarySearchTree.prototype.insert = function(key) {
+					const newNode = new Node(key);
+					//1.判断跟节点是否有值
+					if(this.root == null){
+						this.root = newNode;
+					}else{
+						this.insertNode(this.root,newNode);
+					}
+				}
+				BinarySearchTree.prototype.insertNode = function(node,newNode){
+					if(newNode.key < node.key){//向左插入
+						if(node.left == null){
+							node.left = newNode;
+						}else{
+							this.insertNode(node.left,newNode);
+						}
+					}else{//向右查找
+						if(node.right == null){
+							node.right = newNode;
+						}else{
+							this.insertNode(node.right,newNode);
+						}
+					}
+				}
+				//1.先序遍历
+				BinarySearchTree.prototype.preOrder = function(fn){
+					this.preOrderBefore(this.root,fn);
+				}
+				BinarySearchTree.prototype.preOrderBefore = function(node,fn){
+					if(node != null){
+						fn(node.key);
+						this.preOrderBefore(node.left,fn);
+						this.preOrderBefore(node.right,fn);
+					}
+				}
+				BinarySearchTree.prototype.max = function(){
+					let node  = this.root;
+					let key;
+					while(node != null){
+						key = node.key;
+						node = node.right;
+					}
+					return key;
+				}
+				BinarySearchTree.prototype.min = function(){
+					let node = this.root;
+					let key;
+					while(node != null){
+						key = node.key;
+						node = node.left;
+					}
+					return key;
+				}
+				//搜索某一个key
+				BinarySearchTree.prototype.search = function(key){
+					let node = this.root;
+					while(node != null){
+						if(key < node.key){
+							node = node.left
+						}else if(key > node.key){
+							node = node.right;
+						}else{
+							return true;
+						}
+					}
+					return false;
+				}
+			}
+			
+			const bst = new BinarySearchTree();
+			bst.insert(11);
+			bst.insert(7);
+			bst.insert(15);
+			bst.insert(5);
+			bst.insert(3);
+			bst.insert(9);
+			bst.insert(8);
+			bst.insert(10);
+			bst.insert(13);
+			bst.insert(12);
+			bst.insert(14);
+			bst.insert(20);
+			bst.insert(18);
+			bst.insert(25);
+			bst.insert(6);
+			let resultString = '';
+			bst.preOrder(function(key){
+				resultString += key +'  ';
+			})
+			alert(resultString)
+		</script>
+	</body>
+
+</html>

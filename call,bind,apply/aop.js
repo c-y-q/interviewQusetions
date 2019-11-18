@@ -38,10 +38,12 @@ var cost = (function () {
     }
 })()
 
-cost(10);
-cost(20);
-cost(30);
-var str = '    ';
-if (!str) {
-    console.log('ccccc')
-}
+// cost(10);
+// cost(20);
+// cost(30);
+// var str = '    ';
+// if (!str) {
+//     console.log('ccccc')
+// }
+const num = 2 ^ 3;
+console.log(num)

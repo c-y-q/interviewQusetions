@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>封装集合</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			function Set(){
+				this.items = {};
+				//add方法
+				Set.prototype.add = function(val){
+					if(this.has(val)){
+						return false;
+					}
+					//将元素添加到集合中
+					this.items[val] = val;
+					return true;
+				}
+				//has方法
+				Set.prototype.has = function(val){
+					return this.items.hasOwnProperty(val)
+				}
+				Set.prototype.remove = function(val){
+					if(!this.has(val)) return false;
+					delete this.items[val];
+					return true;
+				}
+				Set.prototype.clear = function(){
+					this.items = {};
+				}
+				Set.prototype.size = function(){
+					return Object.keys(this.items).length; 
+				}
+				Set.prototype.values = function(){
+					return Object.keys(this.items)
+				}
+				/**
+				 * 集合间的操作
+				 */
+				//1.并集合
+				Set.prototype.union =  function (otherSet){
+				  const unionSet = new Set();
+				  const values = this.values();
+				  for(let val of values){
+				  	unionSet.add(val);
+				  }
+				  
+				  let otherValues = otherSet.values();
+				  for(let val of otherValues){
+				  	unionSet.add(val);
+				  }
+				  return unionSet;
+				}
+				//2.交集
+				Set.prototype.intersection = function(otherSet){
+					const intersetsectionSet = new Set();
+					const values = this.values();
+					for(let val of values){
+						if(otherSet.has(val)){
+							intersetsectionSet.add(val)
+						}
+					}
+					return intersetsectionSet;
+				}
+				//3.差集
+				Set.prototype.diffsection = function(otherSet){
+					const diffsection = new Set();
+					const values = this.values();
+					for(let val of values){
+						if(!otherSet.has(val)){
+							diffsection.add(val)
+						}
+					}
+					return diffsection;
+				}
+				//4.子集
+				Set.prototype.subset = function(otherSet){
+					const values = this.values();
+					for(let val of values){
+						if(!otherSet.has(val)){
+							return false;
+						}
+					}
+					return true;
+				}
+			}
+		</script>
+	</body>
+</html>

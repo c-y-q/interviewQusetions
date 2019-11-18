@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>哈希函数</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//设计哈希函数
+			/**
+			 * 1.将字符串转换为比较大的数字：hashCode
+			 * 2.将大的数字hashCdde压缩到数组范围之内
+			 */
+			function hashFun(str,size){
+				//1.定义hashcode变量
+				let hashCode = 0;
+				//2.霍纳算法，来计算hashCode值
+				for(let i = 0; i < str.length; i++){
+					hashCode = 37 * hashCode + str.charCodeAt(i);
+				}
+				//3.取余操作
+				let index = hashCode % size;
+				return index;
+			}
+			//测试哈希函数
+			console.log(26,hashFun('abc',7));
+			console.log(27,hashFun('cba',7));
+			console.log(28,hashFun('bca',7));
+			console.log(29,hashFun('cab',7));
+		</script>
+	</body>
+</html>
