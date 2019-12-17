@@ -56,6 +56,31 @@
 						this.preOrderBefore(node.right,fn);
 					}
 				}
+				//2.中顺遍历
+				BinarySearchTree.prototype.middleOrder = function(fn){
+					this.middleOrderPre(this.root,fn);
+				}
+				BinarySearchTree.prototype.middleOrderPre = function(node,fn){
+					if(node != null){
+						//处理左子树中的节点
+						this.middleOrderPre(node.left,fn);
+						fn(node.key);
+						this.middleOrderPre(node.right,fn);
+					}
+				}
+				//3.后序遍历
+				BinarySearchTree.prototype.postOrder = function(fn){
+					this.postOrderPre(this.root,fn)
+				}
+				BinarySearchTree.prototype.postOrderPre(node,fn){
+					if(node != null){
+						//处理左子树中的节点
+						this.postOrderPre(node.left,fn);
+						this.postOrderPre(node.right,fn);
+						fn(node.key);
+						
+					}
+				}
 				BinarySearchTree.prototype.max = function(){
 					let node  = this.root;
 					let key;
@@ -81,12 +106,60 @@
 						if(key < node.key){
 							node = node.left
 						}else if(key > node.key){
-							node = node.right;
+							node = node.right; 
 						}else{
 							return true;
 						}
 					}
 					return false;
+				}
+				BinarySearchTree.prototype.remove = function(key){
+					//1.寻找删除的节点
+					let current = this.root;
+					let parent = null;
+					let isLeftChild = false;
+					//2.开始寻找删除的节点
+					while(current.key != key){
+						parent = current;
+						if(key < current.key){
+							isLeftChild = true;
+							current = current.left;
+						}else{
+							isLeftChild = false;
+							current = current.right;
+						}
+						//找到最后节点，依然没有找到==key
+						if(current == null) return false;
+					}
+					//1.删除的节点是叶子节点（没有子节点）
+					if(current.left == null && current.right == null){
+						if(current == this.root){
+							this.root = null;
+						}else if(isLeftChild){
+							parent.left = null
+						}else{
+							parent.right = null
+						}
+					}
+					//删除的节点有一个子节点
+					else if (current.right == null){
+						if(current == this.root){
+							this.root = current.left;
+						}else if (isLeftChild){
+							parent.left = current.left;
+						}else{
+							parent.right = current.right;
+						}
+					}else if (current.left == null){
+						if(current == this.root){
+							this.root = current.right;
+						}
+						else if(isLeftChild){
+							parent.left = current.right;
+						}else{
+							parent.right = current.right;
+						}
+					}
 				}
 			}
 			
@@ -108,6 +181,11 @@
 			bst.insert(6);
 			let resultString = '';
 			bst.preOrder(function(key){
+				resultString += key +'  ';
+			})
+			//alert(resultString)
+			resultString  = '';
+			bst.middleOrder(function(key){
 				resultString += key +'  ';
 			})
 			alert(resultString)

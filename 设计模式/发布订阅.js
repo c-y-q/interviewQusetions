@@ -32,3 +32,20 @@ salesOffices.listen('squreMeter110', function (price) {
 
 salesOffices.trigger('squreMeter88', 20000);
 salesOffices.trigger('squreMeter110', 30000);
+
+salesOffices.remove = function (key, fn) {
+    const fns = this.clientList[key];
+    if (!fns) {
+        return false;
+    }
+    if (!fn) { //如果没有传入具体的 回调函数，表示需要取消key对应消息的所有订阅
+        fns && fns.length == 0;
+    } else {
+        for (let i = fns.length - 1; i > 0; i--) {
+            let _fn = fns[i];
+            if (_fn == fn) {
+                fns.splice(i, 1)
+            }
+        }
+    }
+}
