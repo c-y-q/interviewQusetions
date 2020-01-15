@@ -15,3 +15,5 @@
     https: //mp.weixin.qq.com/s/1SGodqhTRM9mBy0Q9J0qow
 
     https: //mp.weixin.qq.com/s/VtVUlB63SpCbmgJ6U4p_Nw
+    https: //github.com/LuckyWinty/fe-weekly-questions/issues
+    做过一点点， 当时用的那个开发包是基于npapi + activex实现的， 基本监控功能是可以实现的， 但是不支持高版本chrome， 后面项目也不了了之。 海康的摄像头底层一般都可以输出RTMP和RTSP的流， 所以也能利用ffmpeg + websocket + MSE做HTML5版本的， 这些也都有成熟的技术了。

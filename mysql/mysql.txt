@@ -1,0 +1,168 @@
+一、String 类
+ 1. mysql 常用函数
+   length, concat, substr, upper, lower, trim,ifnull,isnull
+ 2. 其他函数
+   (1) lpad, 左边用 \* 号填充, 总字符串为长度为 10;
+   rpad 右填充
+   select lpad("小猫", 10, " \* ")
+   (2)relpace,替换; #
+二、数学函数
+   1.round:四舍五入
+   2.ceil:向下取整数
+   3.floor:向上取整数
+三、日期函数
+  1.curdate(),now();
+  2.将字符串通过指定格式转化成日期:str_to_date
+    select str_to_date('1992-7-12','%Y-%c-%d');
+  3.将日期转换为字符串:date_format
+    date_format('2019/10/10',"%Y-%m-%d")
+  4.相差多少天
+   select datediff(max(hiredate),min(hiredate)) from emp;
+四、流程控制
+  1.if语句
+    select if(10<6,'true','false');
+    select price,if(price is null,'happy','促销','sad','正常价格')
+  2.case语句
+   case 要判断的字段或表达式 
+     when 常量1 then 要显示的结果1
+     when 常量2 then 要显示的结果2
+     else 要显示的结果
+   end 别名;
+五、分组函数
+ 1.group by,sum,max,avg,min,count:分组函数都忽略null值
+ 2.select distinct name,id from user;//distinct必须写在前面
+ 3.select count(distinct name,age)from user;
+ 4.group by: 
+   select column,column2,column3  
+   where condition 
+    group by exxpress_ssion 
+    order by column  desc/asc
+ 5.select count(1) ,dept_id from emp group by dept_id having count(1) > 2;
+ 六、进阶自查询
+   1.按子查询出现的位置
+     select from , where group by ...having..
+      exists(相关子查询)
+七、插入方式
+insert into table1 (id, name) select (id,name)from t2
+
+八、语法
+ 1.sql99语法
+  多表更新:
+    update t1 as t
+    inner/left/right join t2 as t2 
+    on 连接条件
+    set column = val1,column2 = val2 
+    where 条件
+ 2.sql92语法(多表删除)
+   delete t1的别名,t2的别名
+   from t1 as t,t2 as t2 
+   where 连接条件
+   and 筛选条件;
+
+   delete t1的别名,t2的别名
+   from t1 as t
+   inner/left/right join t2 as t2 
+    on 连接条件
+   where 连接条件
+   #2.多表的删除
+#案例:删除张无忌的女朋友的信息
+DELETE b T
+FROM beauty b
+INNER JOIN boys bo ON b.、boyfriend id' = bo.、id'
+WHERE bo. 、boyName‘='张无忌' ;
+
+九、插入多行
+INSERT
+INTO my_ employees
+VALUES (1, 'patel' , 'Ralph' , ' Rpatel' , 895) ,
+(2, ' Dancs' , 'Betty', ' Bdancs' , 860) ,
+(3, 'Biri' , 'Ben', 'Bbiri' , 1100) ,
+(4, ' Newman' , 'Chad' , . Cnewman' , 750) ,
+(5, ' Ropeburn' , ' Audrey', ' Aropebur' , 1550) ;
+
+    
+十、案例:
+#1.创建库Books
+    CREATE DATABASE IF NOT EXISTS books;
+#2.仅仅复制表的结构
+    CREATE TABLE copy LIKE author;
+#3.复制表的结构+数据
+CREATE TABLE copy2 SELECT★ FROM author;
+#4.只复制部分数据
+CREATE TABLE copy3 SELECT id, au name  FROM author WHERE nation='中国' ;|
+
+#5.添加列级约束
+USE students ;
+CREATE TABLE stuinfo (
+id INT PRIMARY KEY,#主键
+stuName VARCHAR(20) NOT NULL, #非空
+gender CHAR(1) CHECK (gender='男' OR gender ='女'), #检查
+seat INT UNIQUE, #唯-
+age INT DEFAULT 18, #默认约束
+majorId INT FOREIGN KEY REFERENCES major (id) #外键
+3CREATE TABLE major (
+id INT PRIMARY KEY,
+majorName VARCHAR(20)
+t) ;
+#2.添加表级约束
+DROP TABLE IF EXISTS stuinfo;
+CREATE TABLE stuinfo (
+id INT,
+stuname VARCHAR(20) ，
+gender CHAR(1) , 
+seat INT,
+age INT,
+majorid INT,
+CONSTRAINT pk PRIMARY KEY(id),#主键
+CONSTRAINT uq UNIQUE (seat) ,#唯一键
+CONSTRAINT ck JHECK (gender ='男' OR gender = ' 女') , #检查
+CONSTRAINT fk_ stuinfo_ major FOREIGN KEY (majorid) REFERENCES major(id) #外键.
+
+十一、主键与外键
+主键和唯--的大对比:
+保证唯一性是否 允许为空一 个 表中可以有多少个是 否允许组合
+主键    V       x         至多有1个       V,但不推荐
+唯-            V         可以有多个       V， 但不推荐
+
+十二、事务的特性
+事务的特性:
+ACID
+原子性: - -个事务不可再分割，要么都执行要么都不执行
+一致性:一个事务执行会使数据从一一个一致状态切换到另外一个一致状态
+隔离性:一个事务的执行不受其他事务的干扰
+持久性: - -个事务一旦提交，则会永久的改变数据库的数据.
+
+十三、数据库的隔离级别
+对于同时运行的多个事务,当这些事务访问数据库中相同的数据时,如果没
+有采取必要的隔离机制,就会导致各种并发问题:
+➢脏读:对于两个事务T1, T2,T1读取了已经被T2更新但还没有被提交的字段.
+     之后，若T2回滚,T1读取的内容就是临时且无效的.
+➢不可重复读:对于两个事务T1, T2, T1读取了一个字段,然后T2更新了该字段.
+          之后, T1再次读取同一个字段,值就不同了.
+➢幻读:对于两个事务T1,T2,T1从一个表中读取了一个字段,然后T2在该表中插
+     入了一些新的行.之后,如果T1再次读取同一个表,就会多出几行.
+)数据库事务的隔离性:数据库系统必须具有隔离并发运行各个事务的能力,
+使它们不会相互影响,避免各种并发问题.
+
+●数据库提供的4种事务隔离级别:.
+隔离级别
+描述
+READ UNCOMMITTED
+允许事务读取未被其他事物提交的变更，脏读,不可重复读和幻读的问题都会出现
+(读未提交数据)
+READ COMMITED
+只允许事务读取已经被其它事务提交的变更.可以避免脏读.但不可重复读和幻读问
+(读已提交数据) 
+题仍然可能出现
+REPEATABLE READ
+确保事务可以多次从一个字段中读取相同的值.在这个事务持续期问，禁止其他事物
+(可重复读)
+对这个字段进行更新.可以避免脏读和不可重复读，但幻读的问题仍然存在.
+SERIALIZABLE(串 行化)
+确保事务可以从一个表中读取相同的行.在这个事务持续期间,禁止其他事务对该表
+执行插入,更新和删除操作.所有并发问题都可以避免,但性能十分低下.
+●Oracle支持的2种事务隔离级别: READ COMMITED,
+SERIALIZABLE。Oracle 默认的事务隔离级别为: READ
+COMMITED~ c
+●Mysq|支持4种事务隔离级别.Mysql默认的事务隔离级别
+为:REPEATABLE READ
