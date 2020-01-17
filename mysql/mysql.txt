@@ -206,3 +206,4 @@ set global log_bin_trust_function_creators=TRUE(先执行，否则会报错1418)
 十五、视图
  1.create or REPLACE view t_view as select quantity,price,price*quantity total from t
    select * from t_view
+ 2.查看视图详细信息：show create view t_view
