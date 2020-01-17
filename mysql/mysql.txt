@@ -166,3 +166,43 @@ SERIALIZABLE。Oracle 默认的事务隔离级别为: READ
 COMMITED~ c
 ●Mysq|支持4种事务隔离级别.Mysql默认的事务隔离级别
 为:REPEATABLE READ
+
+十四、存储过程
+1.  CREATE procedure pre3()
+    begin
+    declare p1 int default 0;
+    myloop : loop
+      set p1 = p1+1;
+      if p1 < 10 then iterate myloop;
+      elseif p1 > 10 then leave myloop;
+      end if;
+      select p1;
+    end loop myloop;
+    end;
+
+CALL pre3();
+
+2.repeat语句
+    REPEAT语句示例，id 值小于等于10之前，将重复执行循环过程，代码如下:
+    DECLARE id INT DEFAULT 0;
+    REPEAT
+      SET id = id+ 1;
+    UNTIL id>= 10
+    END REPEAT:
+3.while语句
+ WHILE语句示例，i值小于10时，将重复执行循环过程，代码如下:
+DECLARE i INT DEFAULT 0;
+    WHILE i<10 DO
+       SET i= i+1;
+    END WHILE;
+4.创建函数
+set global log_bin_trust_function_creators=TRUE(先执行，否则会报错1418)
+ create function fn1 (sid int)
+  returns int
+   begin
+   return (select count(*) from emp where id = sid);
+  end
+
+十五、视图
+ 1.create or REPLACE view t_view as select quantity,price,price*quantity total from t
+   select * from t_view
