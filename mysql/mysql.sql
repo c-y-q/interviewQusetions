@@ -1,84 +1,128 @@
-一、String 类
+一
+、String 类
  1. mysql 常用函数
    length, concat, substr, upper, lower, trim,ifnull,isnull;
-   如果中文字段乱码: set names gbk;
- 2. 其他函数
-   (1) lpad, 左边用 \* 号填充, 总字符串为长度为 10;
+如果中文字段乱码:
+set names gbk;
+2. 其他函数
+(1) lpad, 左边用 \* 号填充, 总字符串为长度为 10;
    rpad 右填充
-   select lpad("小猫", 10, " \* ")
-   (2)relpace,替换; #
+select lpad("小猫", 10, " \* ")
+(2)relpace,替换; #
 二、数学函数
-   1.round:四舍五入
-   2.ceil:向下取整数
-   3.floor:向上取整数
+   1.
+round:
+四舍五入
+   2.
+ceil:
+向下取整数
+   3.
+floor:
+向上取整数
 三、日期函数
-  1.curdate(),now();
-  2.将字符串通过指定格式转化成日期:str_to_date
-    select str_to_date('1992-7-12','%Y-%c-%d');
-  3.将日期转换为字符串:date_format
-    date_format('2019/10/10',"%Y-%m-%d")
+  1.curdate
+(),now
+();
+  2.
+将字符串通过指定格式转化成日期:
+str_to_date
+select str_to_date('1992-7-12','%Y-%c-%d');
+3.
+将日期转换为字符串:
+date_format
+    date_format
+('2019/10/10',"%Y-%m-%d")
   4.相差多少天
-   select datediff(max(hiredate),min(hiredate)) from emp;
+select datediff(max(hiredate),min(hiredate))
+from emp;
 四、流程控制
   1.if语句
-    select if(10<6,'true','false');
-    select price,if(price is null,'happy','促销','sad','正常价格')
+select
+if(10<6,'true','false');
+select price, 
+if(price is null,'happy','促销','sad','正常价格')
   2.case语句
    case 要判断的字段或表达式 
      when 常量1 then 要显示的结果1
      when 常量2 then 要显示的结果2
      else 要显示的结果
-   end 别名;
+end 别名;
 五、分组函数
- 1.group by,sum,max,avg,min,count:分组函数都忽略null值
- 2.select distinct name,id from user;//distinct必须写在前面
- 3.select count(distinct name,age)from user;
- 4.group by: 
-   select column,column2,column3  
-   where condition 
-    group by exxpress_ssion 
-    order by column  desc/asc
- 5.select count(1) ,dept_id from emp group by dept_id having count(1) > 2;
- 六、进阶自查询
+ 1.group by,sum,max,avg,min,
+count:
+分组函数都忽略null值
+ 2.
+select distinct name, id
+from user;//distinct必须写在前面
+ 3.
+select count(distinct name, age
+)from user;
+ 4.group
+by:
+select column, column2, column3
+where condition
+group by exxpress_ssion
+order by column  desc
+/asc
+ 5.
+select count(1) , dept_id
+from emp
+group by dept_id
+having count(1) > 2;
+六、进阶自查询
    1.按子查询出现的位置
-     select from , where group by ...having..
-      exists(相关子查询)
+select
+from , 
+where
+group by ...having..
+      exists
+(相关子查询)
 七、插入方式
-insert into table1 (id, name) select (id,name)from t2
+insert into table1
+  (id, name)
+select (id, name
+)from t2
 
 八、语法
  1.sql99语法
-  多表更新:
-    update t1 as t
-    inner/left/right join t2 as t2 
+多表更新:
+update t1 as t
+inner/left/right join t2 as t2 
     on 连接条件
-    set column = val1,column2 = val2 
+set column = val1,column2 = val2 
     where 条件
- 2.sql92语法(多表删除)
-   delete t1的别名,t2的别名
+ 2.sql92语法
+(多表删除)
+delete t1的别名
+,t2的别名
    from t1 as t,t2 as t2 
    where 连接条件
    and 筛选条件;
 
-   delete t1的别名,t2的别名
+delete t1的别名
+,t2的别名
    from t1 as t
    inner/left/right join t2 as t2 
     on 连接条件
    where 连接条件
    #2.多表的删除
-#案例:删除张无忌的女朋友的信息
+#案例:
+删除张无忌的女朋友的信息
 DELETE b T
 FROM beauty b
-INNER JOIN boys bo ON b.、boyfriend id' = bo.、id'
-WHERE bo. 、boyName‘='张无忌' ;
+  INNER JOIN boys bo ON b.、boyfriend id' = bo.、id'
+WHERE bo. 、boyName‘='张无忌'
+;
 
 九、插入多行
 INSERT
-INTO my_ employees
-VALUES (1, 'patel' , 'Ralph' , ' Rpatel' , 895) ,
-(2, ' Dancs' , 'Betty', ' Bdancs' , 860) ,
-(3, 'Biri' , 'Ben', 'Bbiri' , 1100) ,
-(4, ' Newman' , 'Chad' , . Cnewman' , 750) ,
+INTO my_
+employees
+VALUES
+  (1, 'patel' , 'Ralph' , ' Rpatel' , 895) ,
+  (2, ' Dancs' , 'Betty', ' Bdancs' , 860) ,
+  (3, 'Biri' , 'Ben', 'Bbiri' , 1100) ,
+  (4, ' Newman' , 'Chad' , . Cnewman' , 750) ,
 (5, ' Ropeburn' , ' Audrey', ' Aropebur' , 1550) ;
 
     
@@ -197,6 +241,15 @@ DECLARE i INT DEFAULT 0;
        SET i= i+1;
     END WHILE;
 4.创建函数
+#案例1:根据传入的成绩，来显示等级，比如传入的成绩: 90-100， 返回A，80-90， 返回B，60-80， 返回c，否则，返回D
+CREATE FUNCTION test_ if(score INT) RETURNS CHAR
+白BEGIN
+IF score>=90 AND score<=100 THEN RETURN 'A' ;
+ELSEIF score>=80 THEN RETURN 'B' ;
+ELSEIF score>=60 THEN RETURN 'C' ;
+ELSE RETURN 'D' ;
+END IF;
+END $
 set global log_bin_trust_function_creators=TRUE(先执行，否则会报错1418)
  create function fn1 (sid int)
   returns int
@@ -221,7 +274,7 @@ set global log_bin_trust_function_creators=TRUE(先执行，否则会报错1418)
       SELECT salary INTO @sal
       #赋值
       FROM employees
-      WHERE last name = empName ; 
+      WHERE last name = empName; 
       RETURN @sal ;
       LEND $
       SELECT myf2('k_ _ing') $
@@ -319,7 +372,8 @@ where子句的子查询引用了from子句中的表
   FROM admin
   WHERE admin.username = username
   AND admin.password = PASSWORD;
-  SELECT IF (result>0, '成功', '失败') ;#使用
+  SELECT IF (result>0, '
+成功', '失败') ;#使用
   END $
 
 #案例3:根据女神名，返回对应的男神名
@@ -360,3 +414,67 @@ where子句的子查询引用了from子句中的表
     select @m,@n
   查看存储过程:
   show create procedure my2
+  #案例
+#6.带条件语句存储过程，根据传入的成绩，来显示等级，比如传入的成绩: 90-100， 显示A，80-90， 显示B，60-80， 显示c，否则，显示D
+  CREATE PROCEDURE test_ case(IN score INT)
+  BEGIN
+  CASE
+  WHEN score>=90 AND score<=100 THEN SELECT 'A' ;
+  WHEN score>=80 THEN SELECT 'B';
+  WHEN score>=60 THEN SELECT 'C' ;
+  ELSE SELECT 'D' ;
+  END CASE;
+  END $
+
+#7.案例:批量插入，根据次数插入到admin表中多条记录
+  CREATE PROCEDURE pro_ while1 (IN insertCount INT)
+  日BEGIN
+  DECLARE i INT DEFAULT 1 ;
+  白
+  a:WHILE i<=insertCount DO
+  INSERT INTO admin (username,、password^) VALUES('Rose'+i, '666') ;
+  SET i=i+1;
+  END WHILE a;
+  END S
+  #2.添加leave语句
+#案例:批量插入，根据次数插入到admin表中多条记录，如果次数>20则停止
+TRUNCATE TABLE adminS
+DROP PROCEDURE test_ while1S .
+CREATE PROCEDURE test_ while1 (IN insertCount INT)
+BEGIN
+DECLARE i INT DEFAULT 1;
+a:WHILE i<=insertCount DO
+INSERT INTO admin (username,、password^) VALUES (CONCAT ('xiaohua' ,i) , '0000') ;
+IF i>=20 THEN LEAVE a;
+END IF ;
+SET i=i+1;
+END WHILET a;
+END $
+
+二十、mysql锁相关
+ 1.表锁（偏读）
+  a.#手动增加锁表;
+   lock table t1(表名) read(write) ,t2 read(write),其他;
+   说明：读锁是共享锁,不同session都可以同时读取表；
+   读锁：当前session可以查询锁定的表，不能查询未锁定的其他表，不能更新；其他session可以读取锁定的表和未锁定的表，不能更新锁定的表；
+  b.查看表加过的锁；
+  show open tables;
+MyISAM在执行查询语句(SELECT) 前，会自动给涉及的所有表加读锁，在执行增删改操作前，会自动给涉及的表加写锁。
+MySQL的表级锁有两种模式:
+表共享读锁(Table Read Lock)
+表独占写锁(Table Write Lock)
+结论:
+结合上表，所以对MyISAM表进行操作，会有以下情况:
+1、对MyISAM表的读操作(加读锁)，不会阻塞其他进程对同一表的读请求，但会阻塞对同- -表的写请求。只有当读锁释放后，
+才会执行其它进程的写操作。
+2、对MyISAM表的写操作(加写锁)，会阻塞其他进程对同一表的读和写操作，只有当写锁释放后，才会执行其它进程的读写操
+简而言之，就是读锁会阻塞写，但是不会堵塞读。而写锁则会把读和写都堵塞。
+3.查看锁时间 show status like "table%"
+InnoDB与MyISAM的最大不同有两点:一是支持事务(TRANSACTION) ;二是采用了行级锁
++由于行锁支持事务，复习老知识.
+B、锁定一行：
+ 1.begin
+ select * from a1 where name = 'a' for update ;
+ commit;
+ 2.查看行级锁定状态InnoDB;
+   show status like 'innodb_row_lock%'
